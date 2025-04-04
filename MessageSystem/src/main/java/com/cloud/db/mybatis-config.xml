@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!-- 1. DTO(Document Type Definition) : 사용할 태그 정의 -->
+<!DOCTYPE configuration
+  PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+  "https://mybatis.org/dtd/mybatis-3-config.dtd">
+
+<!-- 2. configuration 태그 : mybatis에 대한 모든 설정을 진행하는 공간 -->
+<configuration>
+
+<!-- 3. environments 태그 : 데이터베이스"들"에 대한 정보를 기술하는 공간 -->
+  <environments default="development">
+
+    <!-- 4. environment 태그 : 데이터베이스 "1개"에 대한 정보를 기술하는 공간 -->
+    <environment id="development">
+      <transactionManager type="JDBC"/>
+      <dataSource type="POOLED">
+        <property name="driver" value="${driver}"/>
+        <property name="url" value="${url}"/>
+        <property name="username" value="${username}"/>
+        <property name="password" value="${password}"/>
+      </dataSource>
+    </environment>
+  </environments>
+  <mappers>
+    <mapper resource="org/mybatis/example/BlogMapper.xml"/>
+  </mappers>
+</configuration>
