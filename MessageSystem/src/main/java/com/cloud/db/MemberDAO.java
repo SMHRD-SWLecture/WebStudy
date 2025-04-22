@@ -33,5 +33,9 @@ public class MemberDAO {
         return row;
 
     }
+
+    public void login(MemberVO mvo) {
+        
+    }
     
 }

@@ -25,9 +25,9 @@
 					<nav id="menu">	
 						<ul class="links">
 							<li><h5>로그인</h5></li>
-								<form>
-									<li><input type="text"  placeholder="Email을 입력하세요"></li>
-									<li><input type="password"  placeholder="PW를 입력하세요"></li>
+								<form action="LoginService" method="post">
+									<li><input name="email" type="text"  placeholder="Email을 입력하세요"></li>
+									<li><input name="pw" type="password"  placeholder="PW를 입력하세요"></li>
 									<li><input type="submit" value="LogIn" class="button fit"></li>
 								</form>
 						</ul>
@@ -215,6 +215,27 @@
 			<script src="assets/js/util.js"></script>
 			<!--[if lte IE 8]><script src="assets/js/ie/respond.min.js"></script><![endif]-->
 			<script src="assets/js/main.js"></script>
+			<script>
+				let email = document.getElementById("email");
+				
+				email.addEventListener("keyup", async function() {
+					let sendData = {receive_email : email.value};
+					console.log(sendData);
+					let options = {
+						method : "POST",
+						body : new URLSearchParams(sendData),
+						headers : {
+							"Content-Type" : "application/json"
+						},
+						mode : "no-cors"
+					}
+
+					await fetch("EmailCheck.do", options);
+
+
+				})
+			
+			</script>
 
 	</body>
 </html>
